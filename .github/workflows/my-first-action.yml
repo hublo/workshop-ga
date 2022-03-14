@@ -20,3 +20,8 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: yarn build
       - run: yarn start
+      - name: Update package.json version
+        uses: sergeysova/jq-action@v2
+        id: version
+        with:
+          cmd: echo "`jq '.version="1.0.1"' package.json`" > package.json'
