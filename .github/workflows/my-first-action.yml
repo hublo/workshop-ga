@@ -43,6 +43,11 @@ jobs:
           action: set_version
           argument: ${{ steps.tag_version.outputs.new_tag }}
 
+      - name: Apply formatting
+        uses: actionsx/prettier@v2
+        with:
+          args: --write package.json
+
       - name: Commit version update
         uses: EndBug/add-and-commit@v8.0.2
         with:
