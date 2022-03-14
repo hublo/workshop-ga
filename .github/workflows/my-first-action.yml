@@ -28,3 +28,17 @@ jobs:
 
       - name: Running app
         run: yarn start
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update package.json version
+        id: package_version
+        uses: MYXOMOPX/modify-pkg-json@master
+        with:
+          target: ./package.json
+          action: set_version
+          argument: ${{ steps.tag_version.outputs.new_tag }}
