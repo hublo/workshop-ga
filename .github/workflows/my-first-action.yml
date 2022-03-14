@@ -28,3 +28,12 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+      - name: Installing dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: start
+        run: yarn start
