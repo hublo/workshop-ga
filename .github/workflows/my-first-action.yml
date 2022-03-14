@@ -1,5 +1,8 @@
 name: GitHub Actions Demo
 on:
+  push:
+    branches:
+      - jpb06
   workflow_dispatch:
 jobs:
   Explore-GitHub-Actions:
