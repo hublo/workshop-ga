@@ -1,6 +1,13 @@
 name: GitHub Actions Demo
 on:
+  push:
+    branches:
+      - ws-use-gitlab-ci
   workflow_dispatch:
+    version:
+        description: 'Version'
+        type: string
+        required: true 
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -14,5 +21,16 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
         run: |
-          ls ${{ github.workspace }}
+          ls ${{ github.workspace }}      
       - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  Update-package-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update package.json version
+        id: package_version
+        uses: MYXOMOPX/modify-pkg-json@master
+        with:
+          target: ./package.json
+          action: set_version
+          argument: ${{ github.event.inputs.version }}
