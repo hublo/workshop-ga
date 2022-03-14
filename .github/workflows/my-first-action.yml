@@ -1,6 +1,8 @@
 name: GitHub Actions Demo
 on:
-  workflow_dispatch:
+  push:
+  branches:
+    - ws-pierrick
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
