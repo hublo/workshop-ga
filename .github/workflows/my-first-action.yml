@@ -26,5 +26,5 @@ jobs:
       - name: Building stuff
         run: yarn build
 
-      - name: Installing dependencies
+      - name: Running app
         run: yarn start
