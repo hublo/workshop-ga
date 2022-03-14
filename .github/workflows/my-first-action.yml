@@ -1,6 +1,11 @@
 name: GitHub Actions Demo
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: "version for something"
+        required: false
+        default: "100000000"
   push:
     branches:
       - 'isidoro'
